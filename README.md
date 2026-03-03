@@ -1,74 +1,41 @@
-# PixelArena - Checkpoint 1 : Le Bug du Lobby
+# CP8 — Le Crash
 
-## Contexte
+> ⏱ 20 min — Compétences couvertes : C17
 
-Bienvenue chez **PixelArena** ! Vous venez d'etre embauche comme developpeur frontend.
+Télécharge le zip **checkpoint8** depuis Teams.
 
-Le developpeur precedent a quitte l'entreprise precipitamment. Son code... disons qu'il a ses particularites.
+---
 
-Votre manager vous demande une modification "simple" :
-
-> "Change la couleur du bouton JOIN dans le Lobby. Le bleu ne va pas avec notre nouvelle charte graphique. Mets-le en **vert** (#10b981). Ca devrait prendre 5 minutes."
-
-## Installation
+## Lancer (5 terminaux)
 
 ```bash
-npm install
-npm start
-```
-
-L'application demarre sur http://localhost:3000
-
-## Votre Mission
-
-### Objectif
-Changer la couleur du bouton "JOIN" dans le Lobby de **bleu** (#3b82f6) vers **vert** (#10b981).
-
-### Fichier a modifier
-`src/components/Lobby.css`
-
-### Ce que vous devez faire
-1. Ouvrir `src/components/Lobby.css`
-2. Trouver la classe `.button`
-3. Changer `background: #3b82f6` en `background: #10b981`
-4. Sauvegarder
-
-### Resultat attendu
-Seul le bouton "JOIN" du Lobby devrait devenir vert.
-
----
-
-## Validation du Checkpoint
-
-Apres avoir fait la modification, repondez a ces questions :
-
-1. Le bouton "JOIN" est-il devenu vert ?
-2. Les autres boutons ont-ils change de couleur aussi ?
-3. Si oui, pourquoi selon vous ?
-
----
-
-## Structure du projet
-
-```
-pixelarena-checkpoint1/
-├── src/
-│   ├── index.js
-│   ├── App.jsx
-│   ├── App.css
-│   └── components/
-│       ├── Navbar.jsx
-│       ├── Navbar.css      <- Equipe Navbar
-│       ├── Lobby.jsx
-│       ├── Lobby.css       <- Equipe Lobby (MODIFIER ICI)
-│       ├── Leaderboard.jsx
-│       └── Leaderboard.css <- Equipe Leaderboard
-├── public/
-│   └── index.html
-├── package.json
-└── webpack.config.js
+T1 : cd mfe-header  && npm install && npm start   # 3001
+T2 : cd mfe-lobby   && npm install && npm start   # 3002
+T3 : cd mfe-catalog && npm install && npm start   # 3003
+T4 : cd mfe-cart    && npm install && npm start   # 3004
+T5 : cd shell       && npm install && npm start   # 3000
 ```
 
 ---
 
-Bonne chance !
+## Mission
+
+L'app est cassée. **3 bugs à trouver et corriger.**
+
+Ouvre `localhost:3000` et observe ce qui ne s'affiche pas correctement.
+Ouvre la console du navigateur (F12) et lis les erreurs.
+
+Les 3 bugs se trouvent dans des fichiers `webpack.config.js` :
+- 1 bug dans `shell/webpack.config.js`
+- 1 bug dans `mfe-header/webpack.config.js`
+- 1 bug dans `mfe-catalog/webpack.config.js`
+
+---
+
+## Validation
+
+`localhost:3000` affiche les 4 MFEs sans erreur console.
+
+---
+
+📤 Push ta branche
