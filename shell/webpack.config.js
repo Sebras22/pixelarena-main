@@ -1,62 +1,62 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
-    publicPath: 'http://localhost:3000/',
-    clean: true,
-  },
-  devServer: {
-    port: 3000,
-    hot: true,
-    historyApiFallback: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
+    entry: "./src/index.js",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "[name].[contenthash].js",
+        publicPath: "http://localhost:3000/",
+        clean: true,
     },
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
+    devServer: {
+        port: 3000,
+        hot: true,
+        historyApiFallback: true,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
         },
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    alias: {
-      shared: path.resolve(__dirname, '../shared'),
     },
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'shell',
-      remotes: {
-        mfeHeader: 'mfeHeader@http://localhost:3001/remoteEntry.js',
-        mfeLobby:  'mfeLobby@http://localhost:3002/remoteEntry.js',
-        mfeCatalog: 'mfeCatalog@http://localhost:3003/remoteEntry.js',
-      },
-      shared: {
-        react: { singleton: true, requiredVersion: '^18.2.0' },
-        'react-dom': { singleton: true, requiredVersion: '^18.2.0' },
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-  ],
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env", "@babel/preset-react"],
+                    },
+                },
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+            },
+        ],
+    },
+    resolve: {
+        extensions: [".js", ".jsx"],
+        alias: {
+            shared: path.resolve(__dirname, "../shared"),
+        },
+    },
+    plugins: [
+        new ModuleFederationPlugin({
+            name: "shell",
+            remotes: {
+                mfeHeader: "mfeHeader@http://localhost:3001/remoteEntry.js",
+                mfeLobby: "mfeLobby@http://localhost:3002/remoteEntry.js",
+                mfeCatalog: "mfeCatalog@http://localhost:3003/remoteEntry.js",
+            },
+            shared: {
+                react: { singleton: true, requiredVersion: "^18.2.0" },
+                "react-dom": { singleton: true, requiredVersion: "^18.2.0" },
+            },
+        }),
+        new HtmlWebpackPlugin({
+            template: "./public/index.html",
+        }),
+    ],
 };
